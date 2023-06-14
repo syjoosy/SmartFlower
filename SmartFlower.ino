@@ -207,19 +207,19 @@ void mqttLogic()
   long now = millis();
   if (now - lastMsg > 3000) {
     lastMsg = now;
-    if (!isnan(temperature))
+    if (!isnan(temperature) && temperature != 0)
     {
       snprintf(msg, 5, "%i", temperature);
       client.publish(TEMPERATURE_TOPIC, msg);
     }
 
-    if (!isnan(humidity))
+    if (!isnan(humidity) && humidity != 0)
     {
       snprintf(msg, 5, "%i", humidity);
       client.publish(HUMIDITY_TOPIC, msg);
     }
 
-    if (!isnan(soil))
+    if (!isnan(soil) && soil != 0)
     {
       snprintf(msg, 5, "%i", soil);
       client.publish(SOIL_TOPIC, msg);
